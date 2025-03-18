@@ -1,0 +1,28 @@
+<div class="search">
+  <button class="botao" (click)="tradeSprite()">Trocar Sprite</button>
+  <input class="input"
+    type="text"
+    placeholder="Digite o nome do Pokémon"
+    [(ngModel)]="nomePokemon"
+    (input)="fetchPokemon(nomePokemon)"
+    >
+</div>
+
+<div class="card" *ngIf="pokemon">
+  <div class="card__title">
+    <h3>{{ pokemon.name | uppercase }}</h3>
+  </div>
+
+  <div class="card__body">
+    <img [src]="pokemon.sprites?.[pokeSprite]" alt="Pokemon">
+  </div>
+
+  <!-- Botão para alternar entre os sprites -->
+
+
+  <div class="card__stats">
+    <span class="card__stats__type" *ngFor="let t of pokemon.types">
+      {{ t?.type?.name | uppercase }}
+    </span>
+  </div>
+</div>
